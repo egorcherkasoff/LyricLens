@@ -1,0 +1,146 @@
+@import "reset.scss";
+@import "vars.scss";
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;600&display=swap");
+
+body {
+  font-family: "Mulish", sans-serif;
+  color: $text-color;
+  background-color: $body-color;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  height: 80px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  background-color: $card-color;
+  &__container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__logo {
+    font-size: 30px;
+    letter-spacing: 1.2px;
+  }
+  &__search {
+    height: 30px;
+    width: 300px;
+    &-form {
+      width: 100%;
+      height: inherit;
+    }
+    &-input {
+      position: relative;
+      height: inherit;
+      width: 100%;
+      font-size: 16px;
+      border: none;
+      font-family: inherit;
+      background-color: $body-color;
+      border-radius: 3px;
+      z-index: 1;
+      padding: 0 10px 0 10px;
+      transition: background-color 0.2s ease-in-out;
+      &:focus {
+        outline: none;
+        background-color: $btn-primary-color;
+        color: $body-color;
+        transition: background-color 0.2s ease-in-out;
+        &::placeholder {
+          color: $body-color;
+        }
+      }
+      &::placeholder {
+        color: $text-color;
+      }
+    }
+  }
+}
+
+.link {
+  position: relative;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 16px;
+  color: $btn-primary-color;
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    transform: translateY(-50%);
+    width: 0px;
+    height: 1px;
+    background-color: #000;
+    transition: width 0.2s ease;
+  }
+  &:hover {
+    &::before {
+      width: 100%;
+      transition: width 0.2s ease;
+    }
+  }
+  &__wrap {
+    height: 30px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.main {
+  &__container {
+  }
+  &__placeholder {
+  }
+}
+
+.results {
+  &__title {
+  }
+  &__wrap {
+  }
+}
+
+.song {
+  &__img {
+    &-wrap {
+    }
+  }
+  &__info-wrap {
+  }
+  &__title {
+  }
+  &__artist {
+  }
+  &__link {
+  }
+}
+
+.card {
+  &__info-wrap {
+  }
+  &__img {
+    &-wrap {
+    }
+  }
+  &__general-info {
+  }
+  &__title {
+  }
+  &__subtitle {
+  }
+  &__description {
+  }
+  &__lyrics-wrap {
+  }
+  &__lyrics-secondary-wrap {
+  }
+  &__lyrics {
+  }
+  &__songs {
+  }
+}
