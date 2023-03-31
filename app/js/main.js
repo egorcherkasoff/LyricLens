@@ -17,13 +17,20 @@ const container = document.querySelector(".main__container");
 
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  const url = `${api_url}search?q=${searchInput.value}`;
-  console.log(url);
-  searchInput.value = "";
-  placeholder.classList.add("hidden");
-  container.classList.remove("main__container-no-data");
-
-  getSongs(url);
+  if (searchInput.value && searchInput.value.trim() !== "") {
+    const url = `${api_url}search?q=${searchInput.value}`;
+    searchInput.value = "";
+    placeholder.classList.add("hidden");
+    container.classList.remove("main__container-no-data");
+    getSongs(url);
+  } else {
+    placeholder.classList.remove("hidden");
+    container.classList.add("main__container-no-data");
+    searchCard.classList.add("hidden");
+    while (searchResults.firstChild) {
+      searchResults.removeChild(searchResults.firstChild);
+    }
+  }
 });
 
 async function getSongs(url) {
@@ -33,7 +40,6 @@ async function getSongs(url) {
   const response = await fetch(`${url}&access_token=${accessToken}`);
   const data = await response.json();
   const songs = Array.from(data.response.hits);
-  console.log(songs);
   searchCard.classList.remove("hidden");
   songs.forEach((song) => {
     const songElement = document.createElement("article");
@@ -43,7 +49,7 @@ async function getSongs(url) {
                 <img
                   class="song__img"
                   src="${song.result.header_image_url}"
-                  alt="'s cover"
+                  alt="${song.result.title}'s cover"
                 />
               </div>
               <div class="song__info-wrap">
@@ -51,9 +57,8 @@ async function getSongs(url) {
                 <p class="song__artist">${song.result.artist_names}</p>
               </div>
               <div class="link__wrap song__link">
-                <a class="link" href="#">Details</a>
+                <a class="link" href="${song.result.url}" data-song-id=${song.result.id} target="_blank">View on Genius</a>
               </div>`;
-
     searchResults.appendChild(songElement);
   });
 }
