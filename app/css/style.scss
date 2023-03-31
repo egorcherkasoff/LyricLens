@@ -14,6 +14,10 @@ body {
   margin: 0 auto;
 }
 
+.hidden {
+  display: none;
+}
+
 .header {
   position: fixed;
   top: 0;
@@ -41,6 +45,7 @@ body {
       height: inherit;
     }
     &-input {
+      box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2) inset;
       position: relative;
       height: inherit;
       width: 100%;
@@ -128,6 +133,28 @@ body {
   &__wrap {
     display: flex;
     flex-direction: column;
+  }
+}
+
+.button {
+  background-color: $body-color;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2) inset;
+  border: 0;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 3px;
+  padding: 5px 20px;
+  transition: background-color 0.2s ease;
+  &:active {
+    outline: none;
+  }
+  &:hover {
+    transition: background-color 0.2s ease;
+    color: $body-color;
+    background-color: $btn-primary-color;
+  }
+  &-active {
+    background-color: $btn-secondary-color;
   }
 }
 
